@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil Engineering Company Profile</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #00a651;
+      color: white;
+      padding: 14px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #008f45;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00a651;
+    }
+
+    section {
+      padding: 80px 10%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #00a651;
+      margin-bottom: 10px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .service-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .service-box:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-box i {
+      font-size: 3rem;
+      color: #00a651;
+      margin-bottom: 20px;
+    }
+
+    .service-box h3 {
+      margin-bottom: 15px;
+    }
+
+    .stats {
+      background: #00a651;
+      color: white;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-box h2 {
+      font-size: 3rem;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .contact button {
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media(max-width: 768px) {
+      nav {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        background: #111;
+        width: 100%;
+        flex-direction: column;
+        padding: 20px;
+        transition: 0.3s;
+      }
+
+      nav ul.active {
+        left: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">BuildTech Ltd</div>
+
+    <ul id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <header id="home">
+    <h1>BuildTech Engineering</h1>
+    <p>
+      We specialize in Civil Engineering Works, Road Construction, Building Construction,
+      Borehole Drilling, and Property Management Services.
+    </p>
+
+    <a href="#contact" class="btn">Contact Us</a>
+  </header>
+
+  <section id="about">
+    <div class="section-title">
+      <h2>About Us</h2>
+      <p>Professional Civil Engineering & Construction Company</p>
+    </div>
+
+    <div class="about">
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Construction Site">
+
+      <div>
+        <h3>Who We Are</h3>
+        <p>
+          BuildTech Engineering is a trusted construction and engineering company dedicated to delivering quality infrastructure and property solutions. We provide reliable services tailored to meet client needs with professionalism, integrity, and excellence.
+        </p>
+
+        <br>
+
+        <p>
+          Our experienced team handles projects ranging from road construction and building development to borehole drilling and property management.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>Quality Services We Provide</p>
+    </div>
+
+    <div class="services">
+      <div class="service-box">
+        <i class="fas fa-road"></i>
+        <h3>Road Construction</h3>
+        <p>
+          We construct durable roads, drainage systems, and interlocking paving solutions.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <i class="fas fa-building"></i>
+        <h3>Building Construction</h3>
+        <p>
+          Residential, commercial, and industrial building projects handled professionally.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <i class="fas fa-faucet"></i>
+        <h3>Borehole Drilling</h3>
+        <p>
+          Reliable borehole drilling and water treatment services for homes and businesses.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <i class="fas fa-city"></i>
+        <h3>Property Management</h3>
+        <p>
+          Professional property supervision, maintenance, and tenant management services.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat-box">
+      <h2 id="projects">0</h2>
+      <p>Projects Completed</p>
+    </div>
+
+    <div class="stat-box">
+      <h2 id="clients">0</h2>
+      <p>Happy Clients</p>
+    </div>
+
+    <div class="stat-box">
+      <h2 id="workers">0</h2>
+      <p>Professional Workers</p>
+    </div>
+
+    <div class="stat-box">
+      <h2 id="experience">0</h2>
+      <p>Years Experience</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">
+      <h2>Contact Us</h2>
+      <p>Get In Touch With Us</p>
+    </div>
+
+    <div class="contact">
+      <div>
+        <h3>Office Address</h3>
+        <p>Lagos, Nigeria</p>
+
+        <br>
+
+        <h3>Phone</h3>
+        <p>+234 XXX XXX XXXX</p>
+
+        <br>
+
+        <h3>Email</h3>
+        <p>info@buildtech.com</p>
+      </div>
+
+      <form id="contactForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 BuildTech Engineering. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    const counters = [
+      { id: 'projects', target: 150 },
+      { id: 'clients', target: 120 },
+      { id: 'workers', target: 50 },
+      { id: 'experience', target: 10 }
+    ];
+
+    counters.forEach(counter => {
+      let count = 0;
+      const element = document.getElementById(counter.id);
+
+      const updateCounter = () => {
+        if(count < counter.target) {
+          count++;
+          element.innerText = count;
+          setTimeout(updateCounter, 20);
+        }
+      };
+
+      updateCounter();
+    });
+
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Message Sent Successfully!');
+      contactForm.reset();
+    });
+  </script>
+
+</body>
+</html>
